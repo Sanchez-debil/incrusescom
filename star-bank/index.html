@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Bank — Ваш надёжный банк</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">
+        <svg class="logo__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="#FFD700"/>
+          <path d="M20 8l2.9 8.9H31l-7.6 5.5 2.9 8.9L20 26.8l-6.3 4.5 2.9-8.9L9 16.9h8.1L20 8z" fill="#1A1A2E"/>
+        </svg>
+        <span class="logo__text">Star Bank</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#services" class="nav__link">Услуги</a>
+        <a href="#cards" class="nav__link">Карты</a>
+        <a href="#rates" class="nav__link">Вклады</a>
+        <a href="#about" class="nav__link">О банке</a>
+        <a href="#contacts" class="nav__link">Контакты</a>
+      </nav>
+      <div class="header__actions">
+        <a href="#login" class="btn btn--outline">Войти</a>
+        <a href="#open" class="btn btn--primary">Открыть счёт</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="hero__badge">★ Банк года 2024</span>
+        <h1 class="hero__title">Финансы под управлением <span class="highlight">звёзд</span></h1>
+        <p class="hero__desc">Star Bank — надёжный партнёр для вашего бизнеса и личных финансов. Открывайте счета, копите и инвестируйте с выгодными условиями.</p>
+        <div class="hero__btns">
+          <a href="#open" class="btn btn--primary btn--lg">Открыть счёт бесплатно</a>
+          <a href="#services" class="btn btn--ghost btn--lg">Узнать больше</a>
+        </div>
+        <div class="hero__stats">
+          <div class="stat"><span class="stat__num">2.5M+</span><span class="stat__label">клиентов</span></div>
+          <div class="stat"><span class="stat__num">15 лет</span><span class="stat__label">на рынке</span></div>
+          <div class="stat"><span class="stat__num">18%</span><span class="stat__label">по вкладам</span></div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="card-mock card-mock--gold">
+          <div class="card-mock__logo">★ Star Bank</div>
+          <div class="card-mock__chip"></div>
+          <div class="card-mock__number">4242 •••• •••• 8891</div>
+          <div class="card-mock__footer">
+            <span>ALEKSEY PETROV</span>
+            <span>12/28</span>
+          </div>
+        </div>
+        <div class="card-mock card-mock--dark">
+          <div class="card-mock__logo">★ Star Bank</div>
+          <div class="card-mock__chip"></div>
+          <div class="card-mock__number">5500 •••• •••• 2277</div>
+          <div class="card-mock__footer">
+            <span>MARIA IVANOVA</span>
+            <span>09/27</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero__bg-orbs">
+      <div class="orb orb--1"></div>
+      <div class="orb orb--2"></div>
+      <div class="orb orb--3"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">Что мы предлагаем</span>
+        <h2 class="section-title">Полный спектр банковских услуг</h2>
+        <p class="section-desc">Всё необходимое для управления деньгами — в одном приложении</p>
+      </div>
+      <div class="services__grid">
+        <div class="service-card">
+          <div class="service-card__icon">💳</div>
+          <h3>Дебетовые карты</h3>
+          <p>Кэшбэк до 10%, бесплатное обслуживание и снятие наличных по всему миру</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">🏦</div>
+          <h3>Кредиты</h3>
+          <p>Ставки от 8,9% годовых, решение за 2 минуты, без справок о доходах</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">📈</div>
+          <h3>Вклады и накопления</h3>
+          <p>До 18% годовых, гибкие условия, страхование до 1.4 млн руб.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">💼</div>
+          <h3>Бизнес-банкинг</h3>
+          <p>Расчётный счёт для ИП и юрлиц, эквайринг, зарплатный проект</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">🌍</div>
+          <h3>Переводы</h3>
+          <p>Мгновенные переводы в 50+ стран, выгодный курс конвертации</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">🔒</div>
+          <h3>Страхование</h3>
+          <p>Жизнь, здоровье, имущество, путешествия — оформите онлайн за минуты</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="cards-section" id="cards">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">Наши карты</span>
+        <h2 class="section-title">Выберите свою карту</h2>
+        <p class="section-desc">Для каждого образа жизни — своё решение</p>
+      </div>
+      <div class="cards-section__grid">
+
+        <div class="product-card">
+          <div class="product-card__top product-card__top--silver">
+            <div class="product-card__name">Star Classic</div>
+            <div class="product-card__price">Бесплатно</div>
+          </div>
+          <ul class="product-card__features">
+            <li>✓ Кэшбэк 1% на всё</li>
+            <li>✓ Снятие наличных 3 раза/мес</li>
+            <li>✓ Мобильный банк</li>
+            <li>✓ Переводы по СБП</li>
+            <li class="muted">✗ Приоритетная поддержка</li>
+            <li class="muted">✗ Консьерж-сервис</li>
+          </ul>
+          <a href="#open" class="btn btn--outline btn--full">Оформить</a>
+        </div>
+
+        <div class="product-card product-card--featured">
+          <div class="product-card__badge">Популярный</div>
+          <div class="product-card__top product-card__top--gold">
+            <div class="product-card__name">Star Gold</div>
+            <div class="product-card__price">299 ₽/мес</div>
+          </div>
+          <ul class="product-card__features">
+            <li>✓ Кэшбэк до 5% на категории</li>
+            <li>✓ Бесплатные снятия везде</li>
+            <li>✓ Мобильный банк</li>
+            <li>✓ Переводы без комиссии</li>
+            <li>✓ Приоритетная поддержка</li>
+            <li class="muted">✗ Консьерж-сервис</li>
+          </ul>
+          <a href="#open" class="btn btn--primary btn--full">Оформить</a>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__top product-card__top--black">
+            <div class="product-card__name">Star Black</div>
+            <div class="product-card__price">999 ₽/мес</div>
+          </div>
+          <ul class="product-card__features">
+            <li>✓ Кэшбэк до 10% на всё</li>
+            <li>✓ Снятия без лимитов</li>
+            <li>✓ Премиум поддержка 24/7</li>
+            <li>✓ Переводы без комиссии</li>
+            <li>✓ Приоритетная поддержка</li>
+            <li>✓ Консьерж-сервис</li>
+          </ul>
+          <a href="#open" class="btn btn--outline btn--full">Оформить</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RATES -->
+  <section class="rates" id="rates">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">Вклады</span>
+        <h2 class="section-title">Выгодные условия по вкладам</h2>
+        <p class="section-desc">Сохраняйте и приумножайте деньги с надёжным банком</p>
+      </div>
+      <div class="rates__table-wrap">
+        <table class="rates__table">
+          <thead>
+            <tr>
+              <th>Вклад</th>
+              <th>Срок</th>
+              <th>Ставка</th>
+              <th>Мин. сумма</th>
+              <th>Пополнение</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Звёздный</strong></td>
+              <td>3 месяца</td>
+              <td class="rate-highlight">12% годовых</td>
+              <td>50 000 ₽</td>
+              <td>Нет</td>
+              <td><a href="#open" class="btn btn--sm btn--primary">Открыть</a></td>
+            </tr>
+            <tr>
+              <td><strong>Накопительный</strong></td>
+              <td>6 месяцев</td>
+              <td class="rate-highlight">15% годовых</td>
+              <td>100 000 ₽</td>
+              <td>Да</td>
+              <td><a href="#open" class="btn btn--sm btn--primary">Открыть</a></td>
+            </tr>
+            <tr class="rates__row--featured">
+              <td><strong>Максимум ★</strong></td>
+              <td>12 месяцев</td>
+              <td class="rate-highlight">18% годовых</td>
+              <td>200 000 ₽</td>
+              <td>Нет</td>
+              <td><a href="#open" class="btn btn--sm btn--primary">Открыть</a></td>
+            </tr>
+            <tr>
+              <td><strong>Пенсионный</strong></td>
+              <td>6–24 месяца</td>
+              <td class="rate-highlight">16% годовых</td>
+              <td>10 000 ₽</td>
+              <td>Да</td>
+              <td><a href="#open" class="btn btn--sm btn--primary">Открыть</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container about__inner">
+      <div class="about__content">
+        <span class="section-badge">О банке</span>
+        <h2 class="section-title">Star Bank — банк, которому доверяют</h2>
+        <p>Мы работаем с 2009 года и за это время стали одним из самых надёжных финансовых институтов страны. Лицензия ЦБ РФ №3421, участник системы страхования вкладов.</p>
+        <p>Наши клиенты получают не просто банковские услуги — они получают надёжного финансового партнёра с прозрачными условиями и современными технологиями.</p>
+        <div class="about__achievements">
+          <div class="achievement">
+            <span class="achievement__num">★ Банк года</span>
+            <span class="achievement__desc">Forbes, 2023–2024</span>
+          </div>
+          <div class="achievement">
+            <span class="achievement__num">AAA</span>
+            <span class="achievement__desc">Рейтинг надёжности</span>
+          </div>
+          <div class="achievement">
+            <span class="achievement__num">ТОП-10</span>
+            <span class="achievement__desc">Банков России</span>
+          </div>
+        </div>
+      </div>
+      <div class="about__img-wrap">
+        <div class="about__img-card">
+          <div class="about__number">2.5<span>млн</span></div>
+          <div class="about__number-label">Активных клиентов</div>
+        </div>
+        <div class="about__img-card about__img-card--accent">
+          <div class="about__number">350<span>+</span></div>
+          <div class="about__number-label">Офисов по России</div>
+        </div>
+        <div class="about__img-card">
+          <div class="about__number">24/7</div>
+          <div class="about__number-label">Поддержка клиентов</div>
+        </div>
+        <div class="about__img-card about__img-card--accent">
+          <div class="about__number">15<span>лет</span></div>
+          <div class="about__number-label">На финансовом рынке</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="open">
+    <div class="container cta__inner">
+      <div class="cta__content">
+        <h2>Готовы начать?</h2>
+        <p>Откройте счёт онлайн за 5 минут — без визита в офис</p>
+      </div>
+      <form class="cta__form" onsubmit="handleForm(event)">
+        <input type="text" placeholder="Ваше имя" required />
+        <input type="tel" placeholder="+7 (___) ___-__-__" required />
+        <input type="email" placeholder="E-mail" required />
+        <button type="submit" class="btn btn--primary btn--lg">Открыть счёт</button>
+      </form>
+      <p class="cta__note">Нажимая кнопку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+  <section class="contacts" id="contacts">
+    <div class="container contacts__inner">
+      <div class="section-head">
+        <span class="section-badge">Контакты</span>
+        <h2 class="section-title">Свяжитесь с нами</h2>
+      </div>
+      <div class="contacts__grid">
+        <div class="contact-item">
+          <div class="contact-item__icon">📞</div>
+          <div>
+            <strong>Телефон</strong>
+            <p>8 800 555-35-35 (бесплатно)</p>
+            <p>+7 495 123-45-67</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item__icon">✉️</div>
+          <div>
+            <strong>E-mail</strong>
+            <p>support@starbank.ru</p>
+            <p>info@starbank.ru</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item__icon">📍</div>
+          <div>
+            <strong>Главный офис</strong>
+            <p>Москва, ул. Финансовая, 1</p>
+            <p>Пн–Пт: 9:00–20:00</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item__icon">💬</div>
+          <div>
+            <strong>Онлайн-чат</strong>
+            <p>Доступен 24/7 в приложении</p>
+            <p>и на сайте</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="logo">
+          <svg class="logo__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="#FFD700"/>
+            <path d="M20 8l2.9 8.9H31l-7.6 5.5 2.9 8.9L20 26.8l-6.3 4.5 2.9-8.9L9 16.9h8.1L20 8z" fill="#1A1A2E"/>
+          </svg>
+          <span class="logo__text">Star Bank</span>
+        </a>
+        <p>Лицензия ЦБ РФ №3421<br/>Участник системы страхования вкладов</p>
+        <div class="footer__socials">
+          <a href="#" aria-label="Telegram">TG</a>
+          <a href="#" aria-label="VK">VK</a>
+          <a href="#" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <strong>Частным клиентам</strong>
+          <a href="#">Карты</a>
+          <a href="#">Кредиты</a>
+          <a href="#">Вклады</a>
+          <a href="#">Ипотека</a>
+          <a href="#">Страхование</a>
+        </div>
+        <div class="footer__col">
+          <strong>Бизнесу</strong>
+          <a href="#">Расчётный счёт</a>
+          <a href="#">Эквайринг</a>
+          <a href="#">Кредитование</a>
+          <a href="#">Зарплатный проект</a>
+        </div>
+        <div class="footer__col">
+          <strong>Банк</strong>
+          <a href="#">О нас</a>
+          <a href="#">Пресс-центр</a>
+          <a href="#">Карьера</a>
+          <a href="#">Отделения</a>
+          <a href="#">Документы</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <span>© 2024 Star Bank. Все права защищены.</span>
+        <div class="footer__bottom-links">
+          <a href="#">Политика конфиденциальности</a>
+          <a href="#">Правовая информация</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal__box">
+      <div class="modal__icon">⭐</div>
+      <h3>Заявка принята!</h3>
+      <p>Наш специалист свяжется с вами в течение 15 минут</p>
+      <button class="btn btn--primary" onclick="closeModal()">Отлично!</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
