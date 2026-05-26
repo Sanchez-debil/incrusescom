@@ -221,7 +221,7 @@ function populateUserData(user) {
   // First name
   document.querySelectorAll('[data-user-firstname]').forEach(el => el.textContent = user.firstName || '');
   // Email
-  document.querySelectorAll('[data-user-email]').foreach?.(el => el.textContent = user.email || '');
+  document.querySelectorAll('[data-user-email]').forEach(el => { el.textContent = user.email || ''; });
 
   // Greeting
   const greetingEl = document.getElementById('greeting-text');

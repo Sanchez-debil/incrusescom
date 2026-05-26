@@ -4,528 +4,852 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Особистий кабінет — Star Bank Ukraine</title>
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="cabinet.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
-<body class="cabinet-body">
+<body>
 
-  <!-- SIDEBAR -->
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<div class="cabinet-layout">
+
+  <!-- ===== SIDEBAR ===== -->
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar__header">
-      <a href="index.html" class="logo">
-        <svg class="logo__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="20" fill="#FFD700"/>
-          <path d="M20 8l2.9 8.9H31l-7.6 5.5 2.9 8.9L20 26.8l-6.3 4.5 2.9-8.9L9 16.9h8.1L20 8z" fill="#1A1A2E"/>
-        </svg>
-        <span class="logo__text">Star Bank</span>
-      </a>
-      <button class="sidebar__close" id="sidebarClose">✕</button>
-    </div>
 
-    <div class="sidebar__user">
-      <div class="sidebar__avatar" id="sidebarAvatar">ОК</div>
-      <div class="sidebar__user-info">
-        <div class="sidebar__user-name" id="sidebarName">Олексій Коваленко</div>
-        <div class="sidebar__user-phone" id="sidebarPhone">+380 (067) 123-45-67</div>
+    <div class="sidebar__header">
+      <a href="index.html" class="sidebar__logo">
+        <svg class="sidebar__logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="18" fill="#FFD700"/>
+          <path d="M18 7l2.6 8H28l-6.8 5 2.6 8-6.8-5-6.8 5 2.6-8L5 15h7.4L18 7z" fill="#1A1A2E"/>
+        </svg>
+        <span class="sidebar__logo-text">Star Bank</span>
+      </a>
+
+      <div class="sidebar__user">
+        <div class="sidebar__avatar" data-user-initials>КО</div>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name" data-user-fullname>Коваленко Олексій</div>
+          <div class="sidebar__user-phone" data-user-phone>+380 50 123-45-67</div>
+        </div>
       </div>
     </div>
 
     <nav class="sidebar__nav">
-      <button class="sidebar__nav-item active" data-section="dashboard">
-        <span class="sidebar__nav-icon">🏠</span>
-        <span class="sidebar__nav-label">Головна</span>
+      <button class="nav-item" data-section="home">
+        <span class="nav-item__icon">🏠</span>
+        <span class="nav-item__text">Головна</span>
       </button>
-      <button class="sidebar__nav-item" data-section="cards">
-        <span class="sidebar__nav-icon">💳</span>
-        <span class="sidebar__nav-label">Мої картки</span>
+      <button class="nav-item" data-section="cards">
+        <span class="nav-item__icon">💳</span>
+        <span class="nav-item__text">Мої картки</span>
       </button>
-      <button class="sidebar__nav-item" data-section="payments">
-        <span class="sidebar__nav-icon">💸</span>
-        <span class="sidebar__nav-label">Платежі</span>
+      <button class="nav-item" data-section="payments">
+        <span class="nav-item__icon">💸</span>
+        <span class="nav-item__text">Платежі</span>
       </button>
-      <button class="sidebar__nav-item" data-section="transfers">
-        <span class="sidebar__nav-icon">🔄</span>
-        <span class="sidebar__nav-label">Перекази</span>
+      <button class="nav-item" data-section="transfers">
+        <span class="nav-item__icon">🔄</span>
+        <span class="nav-item__text">Перекази</span>
       </button>
-      <button class="sidebar__nav-item" data-section="deposits">
-        <span class="sidebar__nav-icon">📊</span>
-        <span class="sidebar__nav-label">Вклади</span>
+      <button class="nav-item" data-section="deposits">
+        <span class="nav-item__icon">📊</span>
+        <span class="nav-item__text">Вклади</span>
       </button>
-      <button class="sidebar__nav-item" data-section="settings">
-        <span class="sidebar__nav-icon">⚙️</span>
-        <span class="sidebar__nav-label">Налаштування</span>
+      <button class="nav-item" data-section="settings">
+        <span class="nav-item__icon">⚙️</span>
+        <span class="nav-item__text">Налаштування</span>
       </button>
     </nav>
 
-    <button class="sidebar__logout" id="logoutBtn">
-      <span>🚪</span>
-      <span>Вийти</span>
-    </button>
+    <div class="sidebar__footer">
+      <button class="sidebar__logout" id="logout-btn">
+        <span class="nav-item__icon">🚪</span>
+        <span class="nav-item__text">Вийти</span>
+      </button>
+    </div>
+
   </aside>
 
-  <!-- OVERLAY -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-  <!-- MAIN -->
-  <main class="cabinet-main" id="cabinetMain">
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="cabinet-main">
 
     <!-- TOP BAR -->
-    <header class="topbar">
-      <button class="topbar__burger" id="topbarBurger">☰</button>
-      <div class="topbar__title" id="topbarTitle">Головна</div>
-      <div class="topbar__right">
-        <button class="topbar__bell" id="bellBtn">
-          🔔
-          <span class="topbar__bell-badge">2</span>
-        </button>
-        <div class="topbar__user-chip" id="topbarChip">
-          <div class="topbar__user-avatar" id="topbarAvatar">ОК</div>
-          <span id="topbarName">Олексій</span>
-        </div>
-      </div>
-    </header>
+    <div class="topbar">
+      <button class="topbar__hamburger" id="hamburger" aria-label="Відкрити меню">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <rect y="3" width="20" height="2" rx="1"/>
+          <rect y="9" width="20" height="2" rx="1"/>
+          <rect y="15" width="20" height="2" rx="1"/>
+        </svg>
+      </button>
 
-    <!-- ========== DASHBOARD ========== -->
-    <section class="cab-section active" id="section-dashboard">
+      <span class="topbar__title" id="topbar-title">Головна</span>
 
-      <!-- Verification banner -->
-      <div class="verify-banner" id="verifyBanner">
-        <span>⚠️ Верифікуйте свій акаунт для повного доступу до всіх послуг банку</span>
-        <a href="verify.html" class="verify-banner__btn">Верифікуватися →</a>
-      </div>
-
-      <div class="dashboard-greeting">
-        <div>
-          <h1 class="dashboard-greeting__title" id="greetingTitle">Доброго дня, Олексію! 👋</h1>
-          <p class="dashboard-greeting__date" id="greetingDate">Понеділок, 26 травня 2025</p>
-        </div>
-      </div>
-
-      <!-- Balance row -->
-      <div class="balance-row">
-        <div class="balance-card balance-card--main">
-          <div class="balance-card__label">Поточний рахунок</div>
-          <div class="balance-card__amount" id="mainBalance">₴ 12 450,00</div>
-          <div class="balance-card__iban" id="mainIban">UA21 3223 1300 0002 6001 0000 0001</div>
-          <div class="balance-card__tag">IBAN</div>
-        </div>
-        <div class="balance-card balance-card--savings">
-          <div class="balance-card__label">Накопичувальний</div>
-          <div class="balance-card__amount">₴ 5 200,00</div>
-          <div class="balance-card__rate">15% річних</div>
-          <div class="balance-card__tag">Вклад</div>
-        </div>
-        <div class="balance-card balance-card--cashback">
-          <div class="balance-card__label">Кешбек цього місяця</div>
-          <div class="balance-card__amount balance-card__amount--green">₴ 342,50</div>
-          <div class="balance-card__rate">Star Gold картка</div>
-          <div class="balance-card__tag">Бонуси</div>
-        </div>
-      </div>
-
-      <!-- Quick actions -->
-      <div class="quick-actions">
-        <button class="quick-action" onclick="openActionModal('topup')">
-          <div class="quick-action__icon">➕</div>
-          <div class="quick-action__label">Поповнити</div>
-        </button>
-        <button class="quick-action" onclick="switchSection('transfers')">
-          <div class="quick-action__icon">↗️</div>
-          <div class="quick-action__label">Переказати</div>
-        </button>
-        <button class="quick-action" onclick="switchSection('payments')">
-          <div class="quick-action__icon">📱</div>
-          <div class="quick-action__label">Оплатити</div>
-        </button>
-        <button class="quick-action" onclick="openActionModal('convert')">
-          <div class="quick-action__icon">💱</div>
-          <div class="quick-action__label">Конвертувати</div>
-        </button>
-        <button class="quick-action" onclick="openActionModal('statement')">
-          <div class="quick-action__icon">📄</div>
-          <div class="quick-action__label">Виписка</div>
-        </button>
-        <button class="quick-action" onclick="openActionModal('more')">
-          <div class="quick-action__icon">•••</div>
-          <div class="quick-action__label">Ще</div>
-        </button>
-      </div>
-
-      <!-- Transactions -->
-      <div class="transactions-block">
-        <div class="transactions-block__head">
-          <h2>Останні операції</h2>
-          <button class="transactions-block__all" onclick="openActionModal('allTx')">Всі операції →</button>
-        </div>
-        <div class="transactions-list" id="txList"></div>
-      </div>
-
-    </section>
-
-    <!-- ========== CARDS ========== -->
-    <section class="cab-section" id="section-cards">
-      <div class="section-inner">
-        <h2 class="section-inner__title">Мої картки</h2>
-
-        <div class="my-card-display">
-          <div class="virtual-card virtual-card--gold">
-            <div class="virtual-card__logo">★ Star Bank</div>
-            <div class="virtual-card__chip"></div>
-            <div class="virtual-card__number" id="cardNumber">**** **** **** 8891</div>
-            <div class="virtual-card__footer">
-              <div>
-                <div class="virtual-card__holder-label">Власник</div>
-                <div class="virtual-card__holder" id="cardHolder">OLEKSIY KOVALENKO</div>
-              </div>
-              <div>
-                <div class="virtual-card__holder-label">Дійсна до</div>
-                <div class="virtual-card__expiry">12/28</div>
-              </div>
-              <div class="virtual-card__pay-system">VISA</div>
-            </div>
-          </div>
-
-          <div class="card-details">
-            <div class="card-detail-item">
-              <span class="card-detail-item__label">Тип картки</span>
-              <span class="card-detail-item__val">Star Gold</span>
-            </div>
-            <div class="card-detail-item">
-              <span class="card-detail-item__label">Статус</span>
-              <span class="card-detail-item__val card-detail-item__val--green">● Активна</span>
-            </div>
-            <div class="card-detail-item">
-              <span class="card-detail-item__label">Кешбек</span>
-              <span class="card-detail-item__val">До 5%</span>
-            </div>
-            <div class="card-detail-item">
-              <span class="card-detail-item__label">Ліміт зняття/доба</span>
-              <span class="card-detail-item__val">100 000 ₴</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-actions">
-          <button class="card-action-btn" onclick="showToast('Картку заблоковано тимчасово')">🔒 Заблокувати</button>
-          <button class="card-action-btn" onclick="showToast('Заявку на перевипуск надіслано')">🔄 Перевипустити</button>
-          <button class="card-action-btn" onclick="openActionModal('cardSettings')">⚙️ Налаштування</button>
-          <button class="card-action-btn" onclick="openActionModal('requisites')">📋 Реквізити</button>
-        </div>
-
-        <div class="order-card-block">
-          <h3>Замовити нову картку</h3>
-          <div class="order-card-options">
-            <div class="order-card-option">
-              <div class="order-card-option__name">Star Classic</div>
-              <div class="order-card-option__price">Безкоштовно</div>
-              <button class="btn btn--outline btn--sm" onclick="showToast('Заявку на Star Classic надіслано!')">Замовити</button>
-            </div>
-            <div class="order-card-option order-card-option--featured">
-              <div class="order-card-option__badge">У вас є</div>
-              <div class="order-card-option__name">Star Gold</div>
-              <div class="order-card-option__price">199 ₴/міс</div>
-              <button class="btn btn--primary btn--sm" disabled>Активна</button>
-            </div>
-            <div class="order-card-option">
-              <div class="order-card-option__name">Star Black</div>
-              <div class="order-card-option__price">799 ₴/міс</div>
-              <button class="btn btn--outline btn--sm" onclick="showToast('Заявку на Star Black надіслано!')">Замовити</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== PAYMENTS ========== -->
-    <section class="cab-section" id="section-payments">
-      <div class="section-inner">
-        <h2 class="section-inner__title">Платежі</h2>
-        <div class="payment-categories" id="paymentCategories">
-          <button class="pay-category" onclick="showPayForm('mobile')">
-            <div class="pay-category__icon">📱</div>
-            <div class="pay-category__name">Мобільний зв'язок</div>
+      <div class="topbar__actions">
+        <div style="position:relative;">
+          <button class="topbar__bell" id="notif-bell" aria-label="Сповіщення">
+            🔔
+            <span class="topbar__bell-badge">2</span>
           </button>
-          <button class="pay-category" onclick="showPayForm('utility')">
-            <div class="pay-category__icon">💡</div>
-            <div class="pay-category__name">Комунальні послуги</div>
-          </button>
-          <button class="pay-category" onclick="showPayForm('internet')">
-            <div class="pay-category__icon">🌐</div>
-            <div class="pay-category__name">Інтернет та ТБ</div>
-          </button>
-          <button class="pay-category" onclick="showPayForm('entertainment')">
-            <div class="pay-category__icon">🎬</div>
-            <div class="pay-category__name">Розваги</div>
-          </button>
-          <button class="pay-category" onclick="showPayForm('gov')">
-            <div class="pay-category__icon">🏛️</div>
-            <div class="pay-category__name">Державні послуги</div>
-          </button>
-          <button class="pay-category" onclick="showPayForm('shop')">
-            <div class="pay-category__icon">🛒</div>
-            <div class="pay-category__name">Інтернет-магазини</div>
-          </button>
+          <div id="notif-panel" style="display:none;position:absolute;right:0;top:calc(100% + 8px);width:320px;background:#fff;border:1px solid #E5E7EB;border-radius:16px;box-shadow:0 12px 48px rgba(26,26,46,.16);z-index:200;overflow:hidden;">
+            <div style="padding:16px 20px;border-bottom:1px solid #E5E7EB;font-size:15px;font-weight:700;color:#1A1A2E;">Сповіщення</div>
+            <div style="padding:12px 20px;border-bottom:1px solid #F0F1F5;">
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="font-size:20px;">💰</span>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:#1A1A2E;">Нарахування зарплати</div>
+                  <div style="font-size:12px;color:#6B7280;margin-top:2px;">+25 000,00 ₴ зараховано на рахунок</div>
+                  <div style="font-size:11px;color:#9CA3AF;margin-top:4px;">Сьогодні 09:12</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:12px 20px;">
+              <div style="display:flex;gap:10px;align-items:flex-start;">
+                <span style="font-size:20px;">🎁</span>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:#1A1A2E;">Спеціальна пропозиція</div>
+                  <div style="font-size:12px;color:#6B7280;margin-top:2px;">Відкрийте вклад «Максимум ★» під 18% річних</div>
+                  <div style="font-size:11px;color:#9CA3AF;margin-top:4px;">Вчора</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="pay-form-area" id="payFormArea" style="display:none">
-          <button class="back-btn" onclick="hidePayForm()">← Назад</button>
-          <h3 id="payFormTitle">Оплата</h3>
-          <div class="form-group">
-            <label>Постачальник</label>
-            <select class="form-input" id="payProvider">
-              <option>Оберіть...</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Номер рахунку / телефону</label>
-            <input class="form-input" type="text" placeholder="Введіть номер" id="payAccount" />
-          </div>
-          <div class="form-group">
-            <label>Сума (₴)</label>
-            <input class="form-input" type="number" placeholder="0,00" min="1" id="payAmount" />
-          </div>
-          <button class="btn btn--primary" onclick="submitPayment()">Оплатити</button>
+
+        <div class="topbar__user-chip">
+          <div class="topbar__chip-avatar" data-user-initials>КО</div>
+          <span class="topbar__chip-name" data-user-fullname>Коваленко О.</span>
+          <span class="topbar__chip-arrow">▾</span>
         </div>
       </div>
-    </section>
-
-    <!-- ========== TRANSFERS ========== -->
-    <section class="cab-section" id="section-transfers">
-      <div class="section-inner">
-        <h2 class="section-inner__title">Перекази</h2>
-        <div class="tabs">
-          <button class="tab active" data-tab="phone">За номером телефону</button>
-          <button class="tab" data-tab="iban">За IBAN</button>
-        </div>
-        <div class="tab-content active" id="tab-phone">
-          <div class="form-group">
-            <label>Номер телефону отримувача</label>
-            <input class="form-input" type="tel" placeholder="+380 (0__) ___-__-__" id="transferPhone" />
-          </div>
-          <div class="form-group">
-            <label>Сума (₴)</label>
-            <input class="form-input" type="number" placeholder="0,00" min="1" id="transferPhoneAmount" />
-          </div>
-          <div class="form-group">
-            <label>Коментар (необов'язково)</label>
-            <input class="form-input" type="text" placeholder="Призначення платежу" id="transferPhoneComment" />
-          </div>
-          <button class="btn btn--primary" onclick="submitTransfer('phone')">Переказати</button>
-        </div>
-        <div class="tab-content" id="tab-iban">
-          <div class="form-group">
-            <label>IBAN отримувача</label>
-            <input class="form-input" type="text" placeholder="UA21 XXXX XXXX XXXX XXXX XXXX XXXX" id="transferIban"
-              oninput="formatIban(this)" maxlength="34" />
-          </div>
-          <div class="form-group">
-            <label>ПІБ отримувача</label>
-            <input class="form-input" type="text" placeholder="Іванов Іван Іванович" id="transferName" />
-          </div>
-          <div class="form-group">
-            <label>Сума (₴)</label>
-            <input class="form-input" type="number" placeholder="0,00" min="1" id="transferIbanAmount" />
-          </div>
-          <div class="form-group">
-            <label>Призначення платежу</label>
-            <input class="form-input" type="text" placeholder="Переказ коштів" id="transferIbanComment" />
-          </div>
-          <button class="btn btn--primary" onclick="submitTransfer('iban')">Переказати</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== DEPOSITS ========== -->
-    <section class="cab-section" id="section-deposits">
-      <div class="section-inner">
-        <h2 class="section-inner__title">Вклади</h2>
-
-        <div class="my-deposits">
-          <h3>Мої вклади</h3>
-          <div class="deposit-item">
-            <div class="deposit-item__icon">📊</div>
-            <div class="deposit-item__info">
-              <div class="deposit-item__name">Накопичувальний</div>
-              <div class="deposit-item__details">15% річних · до 26.11.2025</div>
-            </div>
-            <div class="deposit-item__amount">₴ 5 200,00</div>
-            <div class="deposit-item__actions">
-              <button class="btn btn--sm btn--outline" onclick="showToast('Рахунок для поповнення: UA21 3223 1300 0002 6001 0000 0002')">Поповнити</button>
-              <button class="btn btn--sm btn--primary" onclick="openActionModal('depositDetails')">Деталі</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="new-deposit">
-          <h3>Відкрити новий вклад</h3>
-          <div class="deposit-products">
-            <div class="deposit-product">
-              <div class="deposit-product__name">Зоряний</div>
-              <div class="deposit-product__rate">12%</div>
-              <div class="deposit-product__term">3 місяці</div>
-              <div class="deposit-product__min">від 5 000 ₴</div>
-              <button class="btn btn--outline btn--sm" onclick="openDepositModal('Зоряний', 12, 3)">Відкрити</button>
-            </div>
-            <div class="deposit-product deposit-product--featured">
-              <div class="deposit-product__badge">Вигідно</div>
-              <div class="deposit-product__name">Накопичувальний</div>
-              <div class="deposit-product__rate">15%</div>
-              <div class="deposit-product__term">6 місяців</div>
-              <div class="deposit-product__min">від 10 000 ₴</div>
-              <button class="btn btn--primary btn--sm" onclick="openDepositModal('Накопичувальний', 15, 6)">Відкрити</button>
-            </div>
-            <div class="deposit-product">
-              <div class="deposit-product__name">Максимум ★</div>
-              <div class="deposit-product__rate">18%</div>
-              <div class="deposit-product__term">12 місяців</div>
-              <div class="deposit-product__min">від 20 000 ₴</div>
-              <button class="btn btn--outline btn--sm" onclick="openDepositModal('Максимум', 18, 12)">Відкрити</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== SETTINGS ========== -->
-    <section class="cab-section" id="section-settings">
-      <div class="section-inner">
-        <h2 class="section-inner__title">Налаштування</h2>
-
-        <div class="settings-group">
-          <div class="settings-group__title">Профіль</div>
-          <div class="settings-avatar-row">
-            <div class="settings-avatar" id="settingsAvatar">ОК</div>
-            <div>
-              <div class="settings-avatar__name" id="settingsFullName">Коваленко Олексій Вікторович</div>
-              <div class="settings-avatar__verified" id="settingsVerified">⚠️ Не верифіковано — <a href="verify.html">верифікуватися</a></div>
-            </div>
-          </div>
-          <div class="settings-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Прізвище</label>
-                <input class="form-input" type="text" id="setLastName" />
-              </div>
-              <div class="form-group">
-                <label>Ім'я</label>
-                <input class="form-input" type="text" id="setFirstName" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label>По батькові</label>
-              <input class="form-input" type="text" id="setPatronymic" />
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Email (не змінюється)</label>
-                <input class="form-input" type="email" id="setEmail" readonly />
-              </div>
-              <div class="form-group">
-                <label>Телефон (не змінюється)</label>
-                <input class="form-input" type="tel" id="setPhone" readonly />
-              </div>
-            </div>
-            <button class="btn btn--primary" onclick="saveProfile()">Зберегти зміни</button>
-          </div>
-        </div>
-
-        <div class="settings-group">
-          <div class="settings-group__title">Зміна пароля</div>
-          <div class="settings-form">
-            <div class="form-group">
-              <label>Поточний пароль</label>
-              <input class="form-input" type="password" id="oldPassword" placeholder="••••••••" />
-            </div>
-            <div class="form-group">
-              <label>Новий пароль</label>
-              <input class="form-input" type="password" id="newPassword" placeholder="••••••••" />
-            </div>
-            <div class="form-group">
-              <label>Підтвердіть новий пароль</label>
-              <input class="form-input" type="password" id="confirmPassword" placeholder="••••••••" />
-            </div>
-            <button class="btn btn--primary" onclick="changePassword()">Змінити пароль</button>
-          </div>
-        </div>
-
-        <div class="settings-group">
-          <div class="settings-group__title">Сповіщення</div>
-          <div class="settings-toggles">
-            <div class="settings-toggle">
-              <div>
-                <div class="settings-toggle__name">SMS-сповіщення</div>
-                <div class="settings-toggle__desc">Про всі операції по картці</div>
-              </div>
-              <label class="toggle">
-                <input type="checkbox" checked id="toggleSms" />
-                <span class="toggle__slider"></span>
-              </label>
-            </div>
-            <div class="settings-toggle">
-              <div>
-                <div class="settings-toggle__name">Email-сповіщення</div>
-                <div class="settings-toggle__desc">Виписки та важливі новини</div>
-              </div>
-              <label class="toggle">
-                <input type="checkbox" checked id="toggleEmail" />
-                <span class="toggle__slider"></span>
-              </label>
-            </div>
-            <div class="settings-toggle">
-              <div>
-                <div class="settings-toggle__name">Push-сповіщення</div>
-                <div class="settings-toggle__desc">У мобільному застосунку</div>
-              </div>
-              <label class="toggle">
-                <input type="checkbox" id="togglePush" />
-                <span class="toggle__slider"></span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="settings-group settings-group--danger">
-          <div class="settings-group__title">Небезпечна зона</div>
-          <p>Видалення акаунту — незворотна дія. Всі ваші дані будуть знищені.</p>
-          <button class="btn btn--danger" onclick="confirmDeleteAccount()">🗑️ Видалити акаунт</button>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ========== MODAL ========== -->
-  <div class="cab-modal" id="cabModal">
-    <div class="cab-modal__box">
-      <button class="cab-modal__close" onclick="closeModal()">✕</button>
-      <div class="cab-modal__content" id="cabModalContent"></div>
     </div>
+
+    <!-- CONTENT AREA -->
+    <div class="cabinet-content">
+
+      <!-- ===== SECTION: ГОЛОВНА ===== -->
+      <div class="cabinet-section" id="section-home">
+
+        <div class="verify-banner" id="verify-banner">
+          <div class="verify-banner__text">
+            ⚠️ Верифікуйте свій акаунт для повного доступу до послуг банку
+          </div>
+          <a href="verify.html" class="btn">Верифікуватися</a>
+        </div>
+
+        <div class="page-heading">
+          <div class="page-heading__greeting" id="greeting-text">Доброго дня! 👋</div>
+          <div class="page-heading__date" id="greeting-date">Вівторок, 26 травня 2026</div>
+        </div>
+
+        <div class="balance-row">
+          <div class="balance-card balance-card--main">
+            <div class="balance-card__type">Поточний рахунок</div>
+            <div class="balance-card__amount">₴ 12 450,00</div>
+            <div class="iban-display" id="copy-iban-btn" data-copy="UA213223130000260010000000001"
+                 style="cursor:pointer;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.7);">
+              UA21 3223 1300 0002 6001 0000 0001
+              <span class="iban-copy-icon">📋</span>
+            </div>
+          </div>
+          <div class="balance-card balance-card--savings">
+            <div class="balance-card__type">Накопичувальний рахунок</div>
+            <div class="balance-card__amount">₴ 5 200,00</div>
+            <div class="balance-card__rate">3,5% річних</div>
+            <div class="balance-card__label">Зростає щодня</div>
+          </div>
+        </div>
+
+        <div class="metric-tiles">
+          <div class="metric-tile">
+            <span class="metric-tile__icon">💰</span>
+            <div class="metric-tile__label">Загальний баланс</div>
+            <div class="metric-tile__value">₴ 17 650</div>
+            <div class="metric-tile__sub">Усі рахунки</div>
+          </div>
+          <div class="metric-tile">
+            <span class="metric-tile__icon">🎁</span>
+            <div class="metric-tile__label">Кешбек</div>
+            <div class="metric-tile__value">₴ 342,50</div>
+            <div class="metric-tile__sub">За цей місяць</div>
+          </div>
+          <div class="metric-tile">
+            <span class="metric-tile__icon">📉</span>
+            <div class="metric-tile__label">Витрати</div>
+            <div class="metric-tile__value">₴ 2 427</div>
+            <div class="metric-tile__sub">За 7 днів</div>
+          </div>
+          <div class="metric-tile">
+            <span class="metric-tile__icon">📈</span>
+            <div class="metric-tile__label">Надходження</div>
+            <div class="metric-tile__value">₴ 26 500</div>
+            <div class="metric-tile__sub">За 7 днів</div>
+          </div>
+        </div>
+
+        <p class="section-title">Швидкі дії</p>
+        <div class="quick-actions">
+          <div class="quick-action" id="qa-deposit">
+            <div class="quick-action__icon">➕</div>
+            <span class="quick-action__label">Поповнити</span>
+          </div>
+          <div class="quick-action" id="qa-transfer">
+            <div class="quick-action__icon">↗️</div>
+            <span class="quick-action__label">Переказати</span>
+          </div>
+          <div class="quick-action" id="qa-pay">
+            <div class="quick-action__icon">📱</div>
+            <span class="quick-action__label">Оплатити</span>
+          </div>
+          <div class="quick-action" id="qa-convert">
+            <div class="quick-action__icon">💱</div>
+            <span class="quick-action__label">Конвертувати</span>
+          </div>
+          <div class="quick-action" id="qa-statement">
+            <div class="quick-action__icon">📄</div>
+            <span class="quick-action__label">Виписка</span>
+          </div>
+          <div class="quick-action" id="qa-more">
+            <div class="quick-action__icon">•••</div>
+            <span class="quick-action__label">Ще</span>
+          </div>
+        </div>
+
+        <div class="transactions-card">
+          <div class="transactions-header">
+            <span class="section-title">Останні операції</span>
+            <a href="#" class="transactions-all">Всі операції →</a>
+          </div>
+          <div id="transactions-list"></div>
+        </div>
+
+      </div>
+
+      <!-- ===== SECTION: МОЇ КАРТКИ ===== -->
+      <div class="cabinet-section" id="section-cards">
+        <div class="page-heading">
+          <div class="page-heading__greeting">Мої картки</div>
+        </div>
+
+        <div class="card-section-wrap">
+          <div>
+            <div class="virtual-card-display">
+              <div class="virtual-card__logo">
+                <span class="virtual-card__logo-icon">★</span>
+                Star Bank
+              </div>
+              <div class="virtual-card__chip"></div>
+              <div class="virtual-card__number">**** **** **** <span data-card-last4>8891</span></div>
+              <div class="virtual-card__footer">
+                <div>
+                  <div class="virtual-card__expiry-label">Дійсна до</div>
+                  <div class="virtual-card__expiry">12/28</div>
+                </div>
+                <div class="virtual-card__holder" data-card-holder>КОВАЛЕНКО ОЛЕКСІЙ</div>
+                <div class="virtual-card__network">VISA</div>
+              </div>
+            </div>
+            <div style="margin-top:16px;">
+              <div class="iban-display" data-copy="UA213223130000260010000000001" style="cursor:pointer;">
+                UA21 3223 1300 0002 6001 0000 0001
+                <span class="iban-copy-icon">📋</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-details-panel">
+            <div class="card-details-title">Star Gold</div>
+            <div class="card-details-status">Активна</div>
+            <div class="card-details-rows">
+              <div class="card-detail-row">
+                <span class="card-detail-row__label">Тип картки</span>
+                <span class="card-detail-row__value">VISA Gold</span>
+              </div>
+              <div class="card-detail-row">
+                <span class="card-detail-row__label">Кешбек</span>
+                <span class="card-detail-row__value" style="color:var(--success);">До 5%</span>
+              </div>
+              <div class="card-detail-row">
+                <span class="card-detail-row__label">Обслуговування</span>
+                <span class="card-detail-row__value">199 ₴/міс</span>
+              </div>
+              <div class="card-detail-row">
+                <span class="card-detail-row__label">Денний ліміт зняття</span>
+                <span class="card-detail-row__value">25 000 ₴</span>
+              </div>
+              <div class="card-detail-row">
+                <span class="card-detail-row__label">Картковий номер</span>
+                <span class="card-detail-row__value">**** **** **** <span data-card-last4>8891</span></span>
+              </div>
+            </div>
+            <div class="card-actions-row">
+              <button class="card-action-btn" id="card-block-btn">
+                <span>🔒</span><span>Заблокувати</span>
+              </button>
+              <button class="card-action-btn" id="card-reissue-btn">
+                <span>🔄</span><span>Перевипустити</span>
+              </button>
+              <button class="card-action-btn" id="card-settings-btn">
+                <span>⚙️</span><span>Налаштування</span>
+              </button>
+              <button class="card-action-btn" id="card-requisites-btn">
+                <span>📋</span><span>Реквізити</span>
+              </button>
+            </div>
+            <button class="btn btn--primary btn--full" id="order-new-card-btn">
+              + Замовити нову картку
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SECTION: ПЛАТЕЖІ ===== -->
+      <div class="cabinet-section" id="section-payments">
+        <div class="page-heading">
+          <div class="page-heading__greeting">Платежі</div>
+          <div class="page-heading__date">Оберіть категорію для здійснення оплати</div>
+        </div>
+
+        <div class="payments-categories">
+          <div class="payment-category" data-cat="mobile">
+            <span class="payment-category__icon">📱</span>
+            <span class="payment-category__name">Мобільний зв'язок</span>
+          </div>
+          <div class="payment-category" data-cat="utilities">
+            <span class="payment-category__icon">💡</span>
+            <span class="payment-category__name">Комунальні послуги</span>
+          </div>
+          <div class="payment-category" data-cat="internet">
+            <span class="payment-category__icon">🌐</span>
+            <span class="payment-category__name">Інтернет</span>
+          </div>
+          <div class="payment-category" data-cat="entertainment">
+            <span class="payment-category__icon">🎬</span>
+            <span class="payment-category__name">Розваги</span>
+          </div>
+          <div class="payment-category" data-cat="gov">
+            <span class="payment-category__icon">🏛️</span>
+            <span class="payment-category__name">Державні послуги</span>
+          </div>
+          <div class="payment-category" data-cat="shop">
+            <span class="payment-category__icon">🛒</span>
+            <span class="payment-category__name">Інтернет-магазини</span>
+          </div>
+        </div>
+
+        <div class="payment-form-wrap" id="payment-form-wrap">
+          <div class="payment-form-title">
+            <span>💸</span>
+            <span id="payment-form-category">Оплата</span>
+          </div>
+          <form id="payment-form" novalidate>
+            <div class="form-group">
+              <label class="form-label">Послуга</label>
+              <select class="form-select" id="pay-service">
+                <option value="">Оберіть послугу</option>
+                <option>Kyivstar</option>
+                <option>Vodafone Україна</option>
+                <option>lifecell</option>
+                <option>Київенерго</option>
+                <option>Нафтогаз</option>
+                <option>Kyivstar Інтернет</option>
+                <option>Укртелеком</option>
+                <option>Netflix</option>
+                <option>Steam</option>
+                <option>ЄДЕБО (державна послуга)</option>
+                <option>Rozetka</option>
+                <option>Prom.ua</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Номер рахунку / телефону</label>
+              <input type="text" class="form-input" id="pay-account" placeholder="+380 або номер особового рахунку" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Сума ₴</label>
+              <input type="number" class="form-input" id="pay-amount" placeholder="0,00" min="1" step="0.01" />
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">💸 Оплатити</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ===== SECTION: ПЕРЕКАЗИ ===== -->
+      <div class="cabinet-section" id="section-transfers">
+        <div class="page-heading">
+          <div class="page-heading__greeting">Перекази</div>
+        </div>
+
+        <div class="transfer-tabs">
+          <button class="transfer-tab active" data-tab="phone">📱 За номером телефону</button>
+          <button class="transfer-tab" data-tab="iban">🏦 За IBAN</button>
+        </div>
+
+        <div class="transfer-form-wrap">
+          <div class="transfer-panel active" id="transfer-panel-phone">
+            <form id="phone-transfer-form" novalidate>
+              <div class="form-group">
+                <label class="form-label">Номер телефону отримувача</label>
+                <input type="tel" class="form-input" id="transfer-phone" placeholder="+380 (0__) ___-__-__" />
+                <div class="form-hint">Переказ за номером телефону — система СЄП НБУ</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Сума ₴</label>
+                <input type="number" class="form-input" id="transfer-phone-amount" placeholder="0,00" min="1" max="50000" step="0.01" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Коментар (необов'язково)</label>
+                <input type="text" class="form-input" id="transfer-phone-comment" placeholder="Призначення платежу" maxlength="100" />
+              </div>
+              <div class="alert alert--info" style="font-size:13px;">
+                💳 Комісія: <strong>0 ₴</strong> на рахунки Star Bank. 1% на інші банки (мін. 5 ₴).
+              </div>
+              <button type="submit" class="btn btn--primary btn--full btn--lg">↗️ Переказати</button>
+            </form>
+          </div>
+
+          <div class="transfer-panel" id="transfer-panel-iban">
+            <form id="iban-transfer-form" novalidate>
+              <div class="form-group">
+                <label class="form-label">IBAN отримувача</label>
+                <input type="text" class="form-input" id="transfer-iban" placeholder="UA21 3223 1300 0002 6001 0000 0001" maxlength="34" style="font-family:monospace;letter-spacing:1px;" />
+                <div class="form-hint">29 символів, починається з UA</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">ПІБ отримувача</label>
+                <input type="text" class="form-input" id="transfer-iban-name" placeholder="Коваленко Олексій Іванович" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Сума ₴</label>
+                <input type="number" class="form-input" id="transfer-iban-amount" placeholder="0,00" min="1" step="0.01" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Призначення платежу</label>
+                <input type="text" class="form-input" id="transfer-iban-purpose" placeholder="Оплата за товар/послугу" maxlength="140" />
+              </div>
+              <button type="submit" class="btn btn--primary btn--full btn--lg">↗️ Переказати</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SECTION: ВКЛАДИ ===== -->
+      <div class="cabinet-section" id="section-deposits">
+        <div class="page-heading">
+          <div class="page-heading__greeting">Вклади</div>
+        </div>
+
+        <p class="section-title">Мої вклади</p>
+        <div class="deposit-item">
+          <div class="deposit-item__icon">📊</div>
+          <div class="deposit-item__info">
+            <div class="deposit-item__name">Накопичувальний вклад</div>
+            <div class="deposit-item__rate">15% річних</div>
+            <div class="deposit-item__meta">Відкрито: 1 листопада 2025 · Закінчується: 1 травня 2026</div>
+          </div>
+          <div class="deposit-item__amount">
+            <div class="deposit-item__value">₴ 5 200,00</div>
+            <div class="deposit-item__expiry">+₴ 75,46 нараховано</div>
+          </div>
+          <div class="deposit-item__actions">
+            <button class="btn btn--outline btn--sm" id="deposit-topup-btn">Поповнити</button>
+            <button class="btn btn--ghost btn--sm" id="deposit-details-btn">Деталі</button>
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+        <p class="section-title">Відкрити новий вклад</p>
+        <div class="deposit-products">
+          <div class="deposit-product-card">
+            <div class="deposit-product-icon">⭐</div>
+            <div class="deposit-product-name">Зоряний</div>
+            <div class="deposit-product-rate">12%</div>
+            <div class="deposit-product-term">3 місяці · без поповнення</div>
+            <div class="deposit-product-min">Мін. сума: <strong>5 000 ₴</strong></div>
+            <button class="btn btn--outline btn--full btn--sm open-deposit-btn" data-product="Зоряний">Відкрити</button>
+          </div>
+          <div class="deposit-product-card featured">
+            <div class="deposit-product-badge">Найвигідніший</div>
+            <div class="deposit-product-icon">🌟</div>
+            <div class="deposit-product-name">Максимум ★</div>
+            <div class="deposit-product-rate">18%</div>
+            <div class="deposit-product-term">12 місяців · без поповнення</div>
+            <div class="deposit-product-min">Мін. сума: <strong>20 000 ₴</strong></div>
+            <button class="btn btn--primary btn--full btn--sm open-deposit-btn" data-product="Максимум ★">Відкрити</button>
+          </div>
+          <div class="deposit-product-card">
+            <div class="deposit-product-icon">👴</div>
+            <div class="deposit-product-name">Пенсійний</div>
+            <div class="deposit-product-rate">14%</div>
+            <div class="deposit-product-term">6–24 місяці · з поповненням</div>
+            <div class="deposit-product-min">Мін. сума: <strong>1 000 ₴</strong></div>
+            <button class="btn btn--outline btn--full btn--sm open-deposit-btn" data-product="Пенсійний">Відкрити</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SECTION: НАЛАШТУВАННЯ ===== -->
+      <div class="cabinet-section" id="section-settings">
+        <div class="page-heading">
+          <div class="page-heading__greeting">Налаштування</div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section__header">👤 Профіль</div>
+          <div class="settings-section__body">
+            <div class="profile-photo-wrap">
+              <div class="profile-photo">
+                <div class="profile-photo__circle" id="settings-initials">КО</div>
+                <div class="profile-photo__edit">✏️</div>
+              </div>
+              <div class="profile-photo__hint">
+                <div style="font-weight:600;margin-bottom:4px;">Фото профілю</div>
+                <div style="font-size:13px;color:var(--text-muted);">Натисніть, щоб змінити</div>
+              </div>
+            </div>
+            <form id="settings-profile-form" novalidate>
+              <div class="settings-row">
+                <div class="settings-form-group">
+                  <label class="settings-label">Прізвище</label>
+                  <input type="text" class="settings-input" id="sett-lastname" placeholder="Коваленко" />
+                </div>
+                <div class="settings-form-group">
+                  <label class="settings-label">Ім'я</label>
+                  <input type="text" class="settings-input" id="sett-firstname" placeholder="Олексій" />
+                </div>
+              </div>
+              <div class="settings-form-group">
+                <label class="settings-label">По батькові</label>
+                <input type="text" class="settings-input" id="sett-patronymic" placeholder="Іванович" />
+              </div>
+              <div class="settings-form-group">
+                <label class="settings-label">Дата народження</label>
+                <input type="date" class="settings-input" id="sett-dob" />
+              </div>
+              <div class="settings-form-group">
+                <label class="settings-label">Email</label>
+                <input type="email" class="settings-input" id="sett-email" readonly />
+                <div class="settings-input-hint">Email не може бути змінений. Зверніться до підтримки.</div>
+              </div>
+              <div class="settings-form-group">
+                <label class="settings-label">Номер телефону</label>
+                <input type="tel" class="settings-input" id="sett-phone" readonly />
+                <div class="settings-input-hint">Для зміни телефону зверніться до відділення.</div>
+              </div>
+              <button type="submit" class="btn btn--primary" style="margin-top:8px;">💾 Зберегти зміни</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section__header">🔒 Зміна пароля</div>
+          <div class="settings-section__body">
+            <form id="settings-password-form" novalidate>
+              <div class="settings-form-group">
+                <label class="settings-label">Поточний пароль</label>
+                <div class="form-input-wrap">
+                  <input type="password" class="settings-input" id="sett-old-pwd" placeholder="Введіть поточний пароль" />
+                  <button type="button" class="form-input-icon" data-toggle-password="sett-old-pwd">👁</button>
+                </div>
+              </div>
+              <div class="settings-form-group">
+                <label class="settings-label">Новий пароль</label>
+                <div class="form-input-wrap">
+                  <input type="password" class="settings-input" id="sett-new-pwd" placeholder="Мінімум 8 символів" />
+                  <button type="button" class="form-input-icon" data-toggle-password="sett-new-pwd">👁</button>
+                </div>
+                <div class="password-strength" style="margin-top:8px;">
+                  <div class="strength-bar" id="sett-strength-bar">
+                    <div class="strength-segment"></div>
+                    <div class="strength-segment"></div>
+                    <div class="strength-segment"></div>
+                    <div class="strength-segment"></div>
+                  </div>
+                  <span class="strength-label" id="sett-strength-label"></span>
+                </div>
+              </div>
+              <div class="settings-form-group">
+                <label class="settings-label">Підтвердити новий пароль</label>
+                <div class="form-input-wrap">
+                  <input type="password" class="settings-input" id="sett-confirm-pwd" placeholder="Повторіть новий пароль" />
+                  <button type="button" class="form-input-icon" data-toggle-password="sett-confirm-pwd">👁</button>
+                </div>
+              </div>
+              <button type="submit" class="btn btn--primary" style="margin-top:8px;">🔒 Змінити пароль</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section__header">🔔 Сповіщення</div>
+          <div class="settings-section__body">
+            <div class="toggle-list">
+              <div class="toggle-item">
+                <div class="toggle-item__info">
+                  <div class="toggle-item__name">SMS-сповіщення</div>
+                  <div class="toggle-item__desc">Про кожну операцію по картці</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked />
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </label>
+              </div>
+              <div class="toggle-item">
+                <div class="toggle-item__info">
+                  <div class="toggle-item__name">Email-сповіщення</div>
+                  <div class="toggle-item__desc">Виписки та важливі повідомлення</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked />
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </label>
+              </div>
+              <div class="toggle-item">
+                <div class="toggle-item__info">
+                  <div class="toggle-item__name">Push-сповіщення</div>
+                  <div class="toggle-item__desc">У мобільному застосунку</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" />
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </label>
+              </div>
+              <div class="toggle-item">
+                <div class="toggle-item__info">
+                  <div class="toggle-item__name">Маркетингові пропозиції</div>
+                  <div class="toggle-item__desc">Спеціальні пропозиції та акції</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked />
+                  <div class="toggle-track"></div>
+                  <div class="toggle-thumb"></div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="danger-zone">
+          <div class="danger-zone__text">
+            <div class="danger-zone__title">Видалення акаунта</div>
+            <div class="danger-zone__desc">Ця дія є незворотною. Всі ваші дані та рахунки будуть закриті.</div>
+          </div>
+          <button class="btn btn--danger" id="delete-account-btn">🗑 Видалити акаунт</button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-bottom-nav">
+  <div class="mobile-bottom-nav__inner">
+    <button class="mobile-nav-item" data-section="home">
+      <span class="mobile-nav-item__icon">🏠</span>
+      Головна
+    </button>
+    <button class="mobile-nav-item" data-section="cards">
+      <span class="mobile-nav-item__icon">💳</span>
+      Картки
+    </button>
+    <button class="mobile-nav-item" data-section="payments">
+      <span class="mobile-nav-item__icon">💸</span>
+      Платежі
+    </button>
+    <button class="mobile-nav-item" data-section="transfers">
+      <span class="mobile-nav-item__icon">🔄</span>
+      Перекази
+    </button>
+    <button class="mobile-nav-item" data-section="settings">
+      <span class="mobile-nav-item__icon">⚙️</span>
+      Більше
+    </button>
   </div>
+</nav>
 
-  <!-- TOAST -->
-  <div class="toast" id="toast"></div>
+<!-- ===== MODALS ===== -->
 
-  <!-- BOTTOM NAV (mobile) -->
-  <nav class="bottom-nav">
-    <button class="bottom-nav__item active" data-section="dashboard">
-      <span>🏠</span><span>Головна</span>
-    </button>
-    <button class="bottom-nav__item" data-section="cards">
-      <span>💳</span><span>Картки</span>
-    </button>
-    <button class="bottom-nav__item" data-section="payments">
-      <span>💸</span><span>Платежі</span>
-    </button>
-    <button class="bottom-nav__item" data-section="transfers">
-      <span>🔄</span><span>Перекази</span>
-    </button>
-    <button class="bottom-nav__item" data-section="settings">
-      <span>⚙️</span><span>Ще</span>
-    </button>
-  </nav>
+<div class="modal-overlay" id="modal-deposit">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>➕ Поповнити рахунок</h3>
+      <button class="modal-close" data-close-modal="modal-deposit">✕</button>
+    </div>
+    <p>Поповнення поточного рахунку з зовнішньої картки або через термінал</p>
+    <form id="modal-deposit-form" novalidate>
+      <div class="form-group">
+        <label class="form-label">Сума поповнення ₴</label>
+        <input type="number" class="form-input" id="modal-deposit-amount" placeholder="0,00" min="1" step="0.01" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Спосіб поповнення</label>
+        <select class="form-select">
+          <option>Карткою VISA/Mastercard</option>
+          <option>Готівкою через термінал</option>
+          <option>Переказом з іншого банку</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">Поповнити</button>
+    </form>
+  </div>
+</div>
 
-  <script src="cabinet.js"></script>
+<div class="modal-overlay" id="modal-transfer">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>↗️ Швидкий переказ</h3>
+      <button class="modal-close" data-close-modal="modal-transfer">✕</button>
+    </div>
+    <p>Переказ за номером телефону</p>
+    <form id="modal-transfer-form" novalidate>
+      <div class="form-group">
+        <label class="form-label">Телефон отримувача</label>
+        <input type="tel" class="form-input" placeholder="+380 (0__) ___-__-__" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Сума ₴</label>
+        <input type="number" class="form-input" id="modal-transfer-amount" placeholder="0,00" min="1" step="0.01" />
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">Переказати</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-convert">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>💱 Конвертація валют</h3>
+      <button class="modal-close" data-close-modal="modal-convert">✕</button>
+    </div>
+    <p>Курс НБУ на сьогодні: USD = 41,20 ₴ · EUR = 44,85 ₴</p>
+    <form id="modal-convert-form" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Сума</label>
+          <input type="number" class="form-input" id="modal-convert-amount" placeholder="0,00" min="1" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Валюта</label>
+          <select class="form-select">
+            <option>₴ UAH → $ USD</option>
+            <option>₴ UAH → € EUR</option>
+            <option>$ USD → ₴ UAH</option>
+            <option>€ EUR → ₴ UAH</option>
+          </select>
+        </div>
+      </div>
+      <div class="alert alert--info" style="font-size:13px;">
+        ℹ️ Конвертація за офіційним курсом НБУ без додаткової комісії
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">Конвертувати</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-statement">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>📄 Виписка по рахунку</h3>
+      <button class="modal-close" id="stmt-close">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Тип рахунку</label>
+      <select class="form-select">
+        <option>Поточний рахунок (₴ 12 450,00)</option>
+        <option>Накопичувальний (₴ 5 200,00)</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Від</label>
+        <input type="date" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">До</label>
+        <input type="date" class="form-input" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Формат</label>
+      <select class="form-select">
+        <option>PDF</option>
+        <option>Excel (.xlsx)</option>
+        <option>CSV</option>
+      </select>
+    </div>
+    <button class="btn btn--primary btn--full" onclick="showToast('Виписку сформовано та надіслано на ваш email!','success');closeModal('modal-statement');">Сформувати виписку</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-requisites">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>📋 Реквізити рахунку</h3>
+      <button class="modal-close" data-close-modal="modal-requisites">✕</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">Власник рахунку</div>
+        <div style="font-weight:700;" data-card-holder>КОВАЛЕНКО ОЛЕКСІЙ ІВАНОВИЧ</div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">IBAN</div>
+        <div class="iban-display" data-copy="UA213223130000260010000000001" style="cursor:pointer;">
+          UA21 3223 1300 0002 6001 0000 0001
+          <span class="iban-copy-icon">📋</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">Банк</div>
+        <div style="font-weight:600;">АТ «Зоряний Банк» (Star Bank Ukraine)</div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">МФО банку</div>
+        <div style="font-weight:600;font-family:monospace;">322313</div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">ЄДРПОУ банку</div>
+        <div style="font-weight:600;font-family:monospace;">12345678</div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">Адреса банку</div>
+        <div style="font-weight:600;">01001, м. Київ, вул. Хрещатик, 22</div>
+      </div>
+    </div>
+    <button class="btn btn--primary btn--full" style="margin-top:20px;"
+      onclick="showToast('Реквізити скопійовано!','success');closeModal('modal-requisites');">
+      📋 Скопіювати реквізити
+    </button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-deposit-topup">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>💰 Поповнити вклад</h3>
+      <button class="modal-close" data-close-modal="modal-deposit-topup">✕</button>
+    </div>
+    <p>Поповнення вкладу «Накопичувальний». Поточна сума: <strong>₴ 5 200,00</strong></p>
+    <form id="deposit-topup-form" novalidate>
+      <div class="form-group">
+        <label class="form-label">Сума поповнення ₴</label>
+        <input type="number" class="form-input" id="deposit-topup-amount" placeholder="Мін. 100 ₴" min="100" step="0.01" />
+        <div class="form-hint">Кошти будуть списані з поточного рахунку (₴ 12 450,00)</div>
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">Поповнити вклад</button>
+    </form>
+  </div>
+</div>
+
+<div id="toast-container" class="toast-container"></div>
+
+<script src="cabinet.js"></script>
 </body>
 </html>
