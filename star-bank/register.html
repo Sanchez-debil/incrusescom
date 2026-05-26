@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Реєстрація — Star Bank Ukraine</title>
+  <link rel="stylesheet" href="auth.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="auth-page">
+
+  <!-- LEFT PANEL -->
+  <div class="auth-left">
+    <div class="auth-left__bg-orbs">
+      <div class="auth-orb auth-orb--1"></div>
+      <div class="auth-orb auth-orb--2"></div>
+      <div class="auth-orb auth-orb--3"></div>
+    </div>
+
+    <a href="index.html" class="auth-left__logo">
+      <svg class="auth-left__logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="#FFD700"/>
+        <path d="M20 8l2.9 8.9H31l-7.6 5.5 2.9 8.9L20 26.8l-6.3 4.5 2.9-8.9L9 16.9h8.1L20 8z" fill="#1A1A2E"/>
+      </svg>
+      <span class="auth-left__logo-text">Star Bank</span>
+    </a>
+
+    <div class="auth-left__content">
+      <h2 class="auth-left__tagline">Відкрийте рахунок<br/><span>безкоштовно</span></h2>
+      <p class="auth-left__subtitle">Реєстрація займає лише 5 хвилин. Жодних відвідувань відділень.</p>
+
+      <div class="auth-left__benefits">
+        <div class="auth-benefit">
+          <div class="auth-benefit__icon">💳</div>
+          <div class="auth-benefit__text">
+            <span class="auth-benefit__title">Безкоштовна картка</span>
+            <span class="auth-benefit__desc">Star Classic — без щомісячної плати</span>
+          </div>
+        </div>
+        <div class="auth-benefit">
+          <div class="auth-benefit__icon">💰</div>
+          <div class="auth-benefit__text">
+            <span class="auth-benefit__title">Кешбек до 10%</span>
+            <span class="auth-benefit__desc">На улюблені категорії покупок</span>
+          </div>
+        </div>
+        <div class="auth-benefit">
+          <div class="auth-benefit__icon">🏦</div>
+          <div class="auth-benefit__text">
+            <span class="auth-benefit__title">Вклади до 18% річних</span>
+            <span class="auth-benefit__desc">Страхування ФГВФО до 600 000 ₴</span>
+          </div>
+        </div>
+        <div class="auth-benefit">
+          <div class="auth-benefit__icon">🔐</div>
+          <div class="auth-benefit__text">
+            <span class="auth-benefit__title">Верифікація через Дію</span>
+            <span class="auth-benefit__desc">Швидко та безпечно</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-left__footer">
+      АТ «Зоряний Банк» · Ліцензія НБУ №254<br/>
+      Учасник ФГВФО · © 2024 Star Bank Ukraine
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-right">
+    <div class="auth-form-wrap">
+
+      <h1 class="auth-form-title">Реєстрація</h1>
+      <p class="auth-form-subtitle">Вже є акаунт? <a href="login.html" class="auth-link">Увійдіть</a></p>
+
+      <!-- STEP PROGRESS BAR -->
+      <div class="step-progress">
+        <div class="step-item active" id="progress-step-1">
+          <div class="step-item-inner">
+            <div class="step-circle">1</div>
+            <div class="step-label">Особисті</div>
+          </div>
+        </div>
+        <div class="step-line" id="line-1"></div>
+        <div class="step-item" id="progress-step-2">
+          <div class="step-item-inner">
+            <div class="step-circle">2</div>
+            <div class="step-label">Контакти</div>
+          </div>
+        </div>
+        <div class="step-line" id="line-2"></div>
+        <div class="step-item" id="progress-step-3">
+          <div class="step-item-inner">
+            <div class="step-circle">3</div>
+            <div class="step-label">Підтвердження</div>
+          </div>
+        </div>
+        <div class="step-line" id="line-3"></div>
+        <div class="step-item" id="progress-step-4">
+          <div class="step-item-inner">
+            <div class="step-circle">4</div>
+            <div class="step-label">Захист</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WIZARD WRAPPER -->
+      <div id="register-wizard">
+
+        <!-- STEP 1: Особисті дані -->
+        <div class="wizard-step" id="step-1">
+          <h2 style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:20px;">Крок 1 — Особисті дані</h2>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="reg-lastname">Прізвище <span class="required">*</span></label>
+              <input type="text" id="reg-lastname" class="form-input" placeholder="Коваленко" autocomplete="family-name" />
+              <div class="form-error" id="err-lastname"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-firstname">Ім'я <span class="required">*</span></label>
+              <input type="text" id="reg-firstname" class="form-input" placeholder="Олексій" autocomplete="given-name" />
+              <div class="form-error" id="err-firstname"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-patronymic">По батькові</label>
+            <input type="text" id="reg-patronymic" class="form-input" placeholder="Іванович (необов'язково)" autocomplete="additional-name" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-dob">Дата народження <span class="required">*</span></label>
+            <input type="date" id="reg-dob" class="form-input" max="2006-12-31" min="1920-01-01" />
+            <div class="form-error" id="err-dob"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Стать <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="gender" value="male" checked />
+                <span>Чоловіча</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="gender" value="female" />
+                <span>Жіноча</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn--primary btn--full btn--lg" id="step1-next">
+            Далі →
+          </button>
+        </div>
+
+        <!-- STEP 2: Контактна інформація -->
+        <div class="wizard-step" id="step-2" style="display:none;">
+          <h2 style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:20px;">Крок 2 — Контактна інформація</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">Номер телефону <span class="required">*</span></label>
+            <input type="tel" id="reg-phone" class="form-input" placeholder="+380 (050) 123-45-67" autocomplete="tel" />
+            <div class="form-hint">На цей номер надійде SMS-код підтвердження</div>
+            <div class="form-error" id="err-phone"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email <span class="required">*</span></label>
+            <input type="email" id="reg-email" class="form-input" placeholder="your@email.com" autocomplete="email" />
+            <div class="form-error" id="err-email"></div>
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="btn btn--outline" id="step2-back">← Назад</button>
+            <button type="button" class="btn btn--primary" id="step2-next">Далі →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: OTP -->
+        <div class="wizard-step" id="step-3" style="display:none;">
+          <h2 style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px;">Крок 3 — Підтвердження телефону</h2>
+
+          <div class="alert alert--info" style="margin-bottom:20px;">
+            📱 Ми надіслали SMS-код на номер <strong id="otp-phone-hint">+380 (__) ***-**-__</strong>
+          </div>
+
+          <p class="otp-hint">Введіть 6-значний код із SMS:</p>
+
+          <div class="otp-group" id="otp-container">
+            <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="one-time-code" />
+            <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+            <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+            <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+            <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+            <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" />
+          </div>
+
+          <div class="form-error" id="otp-error" style="text-align:center;"></div>
+
+          <div class="otp-resend">
+            Надіслати повторно через <span id="otp-countdown">60с</span>
+            <a id="otp-resend-link">Надіслати знову</a>
+          </div>
+
+          <div class="alert alert--warning" style="margin-top:16px;font-size:12px;">
+            💡 Демо: для тестування завжди введіть код <strong>123456</strong>
+          </div>
+
+          <div class="btn-row" style="margin-top:20px;">
+            <button type="button" class="btn btn--outline" id="step3-back">← Назад</button>
+            <button type="button" class="btn btn--primary" id="step3-confirm">Підтвердити</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Password -->
+        <div class="wizard-step" id="step-4" style="display:none;">
+          <h2 style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:20px;">Крок 4 — Захист облікового запису</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Пароль <span class="required">*</span></label>
+            <div class="form-input-wrap">
+              <input type="password" id="reg-password" class="form-input" placeholder="Мінімум 8 символів" autocomplete="new-password" />
+              <button type="button" class="form-input-icon" id="toggle-reg-password" aria-label="Показати пароль">👁</button>
+            </div>
+            <div class="password-strength">
+              <div class="strength-bar" id="strength-bar">
+                <div class="strength-segment"></div>
+                <div class="strength-segment"></div>
+                <div class="strength-segment"></div>
+                <div class="strength-segment"></div>
+              </div>
+              <span class="strength-label" id="strength-label"></span>
+            </div>
+            <div class="form-error" id="err-password"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password-confirm">Підтвердіть пароль <span class="required">*</span></label>
+            <div class="form-input-wrap">
+              <input type="password" id="reg-password-confirm" class="form-input" placeholder="Повторіть пароль" autocomplete="new-password" />
+              <button type="button" class="form-input-icon" id="toggle-reg-confirm" aria-label="Показати пароль">👁</button>
+            </div>
+            <div class="form-error" id="err-confirm"></div>
+          </div>
+
+          <div style="margin-bottom:8px;">
+            <label class="checkbox-wrap">
+              <input type="checkbox" id="agree-terms" />
+              <span>Погоджуюся з <a href="#">Умовами використання</a> та <a href="#">Політикою конфіденційності</a> Star Bank Ukraine</span>
+            </label>
+            <label class="checkbox-wrap">
+              <input type="checkbox" id="agree-age" />
+              <span>Підтверджую, що є громадянином/-кою України та мені виповнилося 18 років</span>
+            </label>
+            <div class="form-error" id="terms-error"></div>
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="btn btn--outline" id="step4-back">← Назад</button>
+            <button type="button" class="btn btn--primary" id="reg-submit">Зареєструватися</button>
+          </div>
+        </div>
+
+      </div>
+      <!-- END WIZARD -->
+
+    </div>
+  </div>
+
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>

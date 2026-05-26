@@ -61,17 +61,28 @@ document.querySelectorAll('.card-mock').forEach(card => {
   });
 });
 
-// Phone mask
+// Ukrainian phone mask +380 (0XX) XXX-XX-XX
 document.querySelectorAll('input[type="tel"]').forEach(input => {
   input.addEventListener('input', (e) => {
     let v = e.target.value.replace(/\D/g, '');
-    if (v.startsWith('7') || v.startsWith('8')) v = v.slice(1);
-    let formatted = '+7';
-    if (v.length > 0) formatted += ' (' + v.slice(0, 3);
-    if (v.length >= 3) formatted += ') ' + v.slice(3, 6);
-    if (v.length >= 6) formatted += '-' + v.slice(6, 8);
-    if (v.length >= 8) formatted += '-' + v.slice(8, 10);
+    // Remove leading 380 or 0 prefix duplicates
+    if (v.startsWith('380')) v = v.slice(3);
+    else if (v.startsWith('80')) v = v.slice(2);
+    else if (v.startsWith('0')) v = v.slice(1);
+    // Limit to 9 digits after country code
+    v = v.slice(0, 9);
+    let formatted = '+380';
+    if (v.length > 0) formatted += ' (0' + v.slice(0, 2);
+    if (v.length >= 2) formatted += ') ' + v.slice(2, 5);
+    if (v.length >= 5) formatted += '-' + v.slice(5, 7);
+    if (v.length >= 7) formatted += '-' + v.slice(7, 9);
     e.target.value = formatted;
+  });
+  input.addEventListener('focus', (e) => {
+    if (!e.target.value) e.target.value = '+380 (0';
+  });
+  input.addEventListener('blur', (e) => {
+    if (e.target.value === '+380 (0') e.target.value = '';
   });
 });
 

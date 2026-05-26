@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Верифікація — Star Bank Ukraine</title>
+  <link rel="stylesheet" href="auth.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="auth-page">
+
+  <!-- LEFT PANEL -->
+  <div class="auth-left">
+    <div class="auth-left__bg-orbs">
+      <div class="auth-orb auth-orb--1"></div>
+      <div class="auth-orb auth-orb--2"></div>
+      <div class="auth-orb auth-orb--3"></div>
+    </div>
+
+    <a href="index.html" class="auth-left__logo">
+      <svg class="auth-left__logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="#FFD700"/>
+        <path d="M20 8l2.9 8.9H31l-7.6 5.5 2.9 8.9L20 26.8l-6.3 4.5 2.9-8.9L9 16.9h8.1L20 8z" fill="#1A1A2E"/>
+      </svg>
+      <span class="auth-left__logo-text">Star Bank</span>
+    </a>
+
+    <div class="auth-left__content">
+      <h2 class="auth-left__tagline">Підтвердіть<br/><span>свою особу</span></h2>
+      <p class="auth-left__subtitle">Верифікація захищає ваш рахунок та надає доступ до всіх можливостей банку</p>
+
+      <div class="auth-left__benefits">
+        <div class="auth-benefit">
+          <div class="auth-benefit__icon">🛡️</div>
+          <div class="auth-benefit__text">
+            <span class="auth-benefit__title">Безпека рахунку</span>
+            <span class="auth-benefit__desc">Захист від шахраїв та несанкціонованого доступу</span>
+          </div>
+        </div>
+        <div class="auth-benefit">
+          <div class="auth-benefit__icon">📊</div>
+          <div class="auth-benefit__text">
+            <span class="auth-benefit__title">Повний доступ</span>
+            <span class="auth-benefit__desc">Перекази, вклади, кредити без обмежень</span>
+          </div>
+        </div>
+        <div class="auth-benefit">
+          <div class="auth-benefit__icon">⚡</div>
+          <div class="auth-benefit__text">
+            <span class="auth-benefit__title">Через Дію — миттєво</span>
+            <span class="auth-benefit__desc">Ваші дані підтягнуться автоматично</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-left__footer">
+      Ваші персональні дані обробляються відповідно<br/>
+      до Закону України «Про захист персональних даних»<br/>
+      та вимог НБУ щодо KYC-процедур.
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-right">
+    <div class="auth-form-wrap" id="verify-root">
+
+      <!-- Breadcrumb -->
+      <div class="verify-breadcrumb">
+        <span class="verify-crumb active">Спосіб</span>
+        <span class="verify-crumb-sep">›</span>
+        <span class="verify-crumb">Перевірка</span>
+        <span class="verify-crumb-sep">›</span>
+        <span class="verify-crumb">Результат</span>
+      </div>
+
+      <div style="margin-bottom:16px;font-size:13px;color:var(--text-muted);">
+        Верифікація для: <strong id="verify-username">...</strong>
+      </div>
+
+      <!-- STAGE: CHOOSE METHOD -->
+      <div id="stage-choose">
+        <h2 class="auth-form-title">Оберіть спосіб верифікації</h2>
+        <p class="auth-form-subtitle">Ваша особа має бути підтверджена відповідно до вимог НБУ</p>
+
+        <div class="method-cards">
+
+          <button type="button" class="method-card method-card--diia" id="method-diia">
+            <div class="method-card__icon">
+              <span style="width:36px;height:36px;background:#1976D2;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:18px;">Д</span>
+            </div>
+            <div class="method-card__content">
+              <div class="method-card__title">Через Дію</div>
+              <div class="method-card__desc">Найшвидший спосіб. Ваші дані автоматично підтягнуться з державних реєстрів.</div>
+            </div>
+            <div class="method-card__badge">Рекомендовано</div>
+            <div class="method-card__check">✓</div>
+          </button>
+
+          <button type="button" class="method-card" id="method-manual">
+            <div class="method-card__icon">🪪</div>
+            <div class="method-card__content">
+              <div class="method-card__title">Паспорт або ID-картка</div>
+              <div class="method-card__desc">Завантажте фото документа та зробіть селфі. Перевірка займе до 24 годин.</div>
+            </div>
+            <div class="method-card__check">✓</div>
+          </button>
+
+        </div>
+
+        <div class="alert alert--info">
+          ℹ️ Верифікація особи обов'язкова згідно із Законом України «Про запобігання та протидію легалізації доходів».
+        </div>
+
+        <div style="text-align:center;margin-top:16px;">
+          <a href="cabinet.html" style="font-size:13px;color:var(--text-muted);">Пропустити (обмежений доступ)</a>
+        </div>
+      </div>
+
+      <!-- STAGE: DIIA -->
+      <div id="stage-diia" style="display:none;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <button type="button" id="diia-back" class="btn btn--ghost btn--sm">← Назад</button>
+          <h2 class="auth-form-title" style="margin:0;">Відскануйте QR-код у Дії</h2>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">Відкрийте додаток Дія та відскануйте QR-код</p>
+
+        <div class="diia-block">
+          <div class="diia-qr-wrap" id="verify-diia-qr"></div>
+
+          <div class="diia-timer">
+            <span class="diia-timer__dot"></span>
+            Код дійсний: <span id="diia-verify-timer">04:58</span>
+          </div>
+
+          <ol class="diia-instructions">
+            <li>Відкрийте додаток Дія на своєму телефоні</li>
+            <li>Натисніть іконку сканера у верхньому меню</li>
+            <li>Відскануйте QR-код на екрані</li>
+          </ol>
+
+          <div class="or-divider" style="margin:16px 0;">або</div>
+
+          <button type="button" class="btn btn--diia btn--full diia-logo-btn" id="diia-open-app">
+            <span class="diia-icon">Д</span>
+            Відкрити Дію
+          </button>
+
+          <p class="diia-consent">
+            Натискаючи кнопку, ви погоджуєтесь передати дані з Дії до Star Bank Ukraine для верифікації особи відповідно до вимог НБУ.
+          </p>
+
+          <button type="button" class="btn btn--outline btn--full" id="diia-check-status" style="display:none;margin-top:12px;">
+            ✓ Перевірити статус верифікації
+          </button>
+        </div>
+      </div>
+
+      <!-- STAGE: MANUAL -->
+      <div id="stage-manual" style="display:none;">
+
+        <!-- SUB: DOC TYPE -->
+        <div id="manual-doctype">
+          <h2 class="auth-form-title">Оберіть тип документа</h2>
+          <p class="auth-form-subtitle">Який документ ви будете використовувати для верифікації?</p>
+
+          <div class="doc-type-cards">
+            <div class="doc-type-card selected" data-type="id">
+              <div class="doc-type-card__icon">🪪</div>
+              ID-картка<br/><small style="font-weight:400;font-size:12px;">(біометрична)</small>
+            </div>
+            <div class="doc-type-card" data-type="passport">
+              <div class="doc-type-card__icon">📔</div>
+              Паспорт<br/><small style="font-weight:400;font-size:12px;">(книжка)</small>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="btn btn--outline" id="manual-doctype-back">← Назад</button>
+            <button type="button" class="btn btn--primary" id="manual-doctype-next">Далі →</button>
+          </div>
+        </div>
+
+        <!-- SUB: UPLOAD -->
+        <div id="manual-upload" style="display:none;">
+          <h2 class="auth-form-title">Завантажте фото документа</h2>
+          <p class="auth-form-subtitle">Переконайтесь, що всі дані добре видно та не розмиті</p>
+
+          <div class="upload-pair">
+            <div>
+              <div class="upload-pair-label" id="upload-label-1">Лицьова сторона</div>
+              <div class="upload-zone" id="upload-zone-1">
+                <input type="file" accept="image/*" />
+                <div class="upload-zone__icon">📷</div>
+                <div class="upload-zone__title">Перетягніть або <span>оберіть файл</span></div>
+                <div class="upload-zone__hint">JPG, PNG до 10 МБ</div>
+              </div>
+            </div>
+            <div>
+              <div class="upload-pair-label" id="upload-label-2">Зворотна сторона</div>
+              <div class="upload-zone" id="upload-zone-2">
+                <input type="file" accept="image/*" />
+                <div class="upload-zone__icon">📷</div>
+                <div class="upload-zone__title">Перетягніть або <span>оберіть файл</span></div>
+                <div class="upload-zone__hint">JPG, PNG до 10 МБ</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert--info">
+            ✅ Вимоги: гарне освітлення, всі 4 кути видно, текст не розмитий
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="btn btn--outline" id="manual-upload-back">← Назад</button>
+            <button type="button" class="btn btn--primary" id="manual-upload-next">Далі →</button>
+          </div>
+        </div>
+
+        <!-- SUB: DATA -->
+        <div id="manual-data" style="display:none;">
+          <h2 class="auth-form-title">Введіть дані документа</h2>
+          <p class="auth-form-subtitle">Дані мають збігатися з тими, що вказані в документі</p>
+
+          <!-- ID FIELDS -->
+          <div id="doc-id-fields">
+            <div class="form-group">
+              <label class="form-label">Номер документа <span class="required">*</span></label>
+              <input type="text" class="form-input" placeholder="123456789 (9 символів)" maxlength="9" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Дата видачі <span class="required">*</span></label>
+                <input type="date" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Дійсний до <span class="required">*</span></label>
+                <input type="date" class="form-input" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Орган видачі <span class="required">*</span></label>
+              <select class="form-select">
+                <option value="">Оберіть орган видачі</option>
+                <option>1001 — ДМС України (Київ, р-н Шевченківський)</option>
+                <option>1002 — ДМС України (Київ, р-н Дарницький)</option>
+                <option>1003 — ДМС України (Київ, р-н Деснянський)</option>
+                <option>2001 — ДМС України (Харків)</option>
+                <option>3001 — ДМС України (Одеса)</option>
+                <option>4001 — ДМС України (Дніпро)</option>
+                <option>5001 — ДМС України (Запоріжжя)</option>
+                <option>6001 — ДМС України (Львів)</option>
+                <option value="other">Інший орган</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- PASSPORT FIELDS -->
+          <div id="doc-passport-fields" style="display:none;">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Серія <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="АА" maxlength="2" style="text-transform:uppercase;" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Номер <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="123456" maxlength="6" inputmode="numeric" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Дата видачі <span class="required">*</span></label>
+                <input type="date" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Орган видачі <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="РВ ГУ МВС (місто)" />
+              </div>
+            </div>
+          </div>
+
+          <!-- IPN -->
+          <div class="form-group" id="ipn-group">
+            <label class="form-label">
+              <span class="tooltip-wrap">
+                ІПН / РНОКПП
+                <span class="tooltip-icon">?</span>
+                <span class="tooltip-text">Реєстраційний номер облікової картки платника податків. 10-значний номер, виданий ДПС України. Необхідний для відкриття рахунку.</span>
+              </span>
+              <span class="required">*</span>
+            </label>
+            <input type="text" class="form-input" id="ipn-input" placeholder="1234567890 (10 цифр)" maxlength="10" inputmode="numeric" />
+            <div class="form-hint">10-значний код, виданий Державною податковою службою України</div>
+          </div>
+          <label class="checkbox-wrap">
+            <input type="checkbox" id="no-ipn" />
+            <span>Не маю ІПН (за релігійними переконаннями)</span>
+          </label>
+
+          <div class="btn-row" style="margin-top:20px;">
+            <button type="button" class="btn btn--outline" id="manual-data-back">← Назад</button>
+            <button type="button" class="btn btn--primary" id="manual-data-next">Далі →</button>
+          </div>
+        </div>
+
+        <!-- SUB: SELFIE -->
+        <div id="manual-selfie" style="display:none;">
+          <h2 class="auth-form-title">Зробіть селфі з документом</h2>
+          <p class="auth-form-subtitle">Тримайте документ поруч з обличчям так, щоб обидва були чітко видні</p>
+
+          <div class="upload-zone" style="min-height:200px;" id="upload-zone-selfie">
+            <input type="file" accept="image/*" capture="user" />
+            <div class="upload-zone__icon" style="font-size:48px;">🤳</div>
+            <div class="upload-zone__title">Завантажте фото або зробіть знімок</div>
+            <div class="upload-zone__hint">Перетягніть файл або натисніть для вибору</div>
+          </div>
+
+          <ul class="selfie-requirements">
+            <li>Обличчя та документ добре видно</li>
+            <li>Гарне освітлення, немає відблисків</li>
+            <li>Без сонцезахисних окулярів та головного убору</li>
+            <li>Нейтральний вираз обличчя</li>
+          </ul>
+
+          <div class="btn-row">
+            <button type="button" class="btn btn--outline" id="manual-selfie-back">← Назад</button>
+            <button type="button" class="btn btn--primary" id="manual-selfie-next">Надіслати на перевірку</button>
+          </div>
+        </div>
+
+      </div>
+      <!-- END MANUAL -->
+
+      <!-- STAGE: PROCESSING -->
+      <div id="stage-processing" style="display:none;">
+        <div class="processing-block">
+          <div class="processing-spinner"></div>
+          <p class="processing-title">Перевіряємо ваші дані...</p>
+
+          <div class="processing-steps">
+            <div class="processing-step">
+              <div class="processing-step__icon">1</div>
+              <span>Перевірка документа</span>
+            </div>
+            <div class="processing-step">
+              <div class="processing-step__icon">2</div>
+              <span>Звірка з реєстрами</span>
+            </div>
+            <div class="processing-step">
+              <div class="processing-step__icon">3</div>
+              <span>Активація рахунку</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE: SUCCESS -->
+      <div id="stage-success" style="display:none;">
+        <div class="auth-success">
+          <div class="success-checkmark">
+            <svg viewBox="0 0 40 40">
+              <polyline class="success-checkmark-path" points="8,22 17,31 32,12" />
+            </svg>
+          </div>
+          <h2 class="success-title">Верифікацію пройдено успішно!</h2>
+          <p class="success-desc">
+            Ваш рахунок активовано. Ласкаво просимо до Star Bank Ukraine!<br/>
+            Тепер вам доступні всі послуги банку без обмежень.
+          </p>
+          <button type="button" class="btn btn--primary btn--full btn--lg" id="go-cabinet-success">
+            Перейти до кабінету →
+          </button>
+        </div>
+      </div>
+
+      <!-- STAGE: PENDING -->
+      <div id="stage-pending" style="display:none;">
+        <div class="auth-success">
+          <div class="pending-icon">⏳</div>
+          <h2 class="success-title" style="font-size:20px;">Документи на перевірці</h2>
+          <p class="success-desc">
+            Ми перевіримо ваші документи протягом 24 годин.<br/>
+            Ми повідомимо вас на email: <strong id="pending-email">ваш@email.com</strong>
+          </p>
+          <div class="alert alert--warning" style="text-align:left;margin-bottom:24px;">
+            ⏰ Поки тривае перевірка, ви можете користуватися обмеженими функціями кабінету.
+          </div>
+          <button type="button" class="btn btn--primary btn--full btn--lg" id="go-cabinet-pending">
+            Перейти до кабінету →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>

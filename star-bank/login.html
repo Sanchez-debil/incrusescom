@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Вхід — Star Bank Ukraine</title>
+  <link rel="stylesheet" href="auth.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="auth-page">
+
+  <!-- LEFT PANEL -->
+  <div class="auth-left">
+    <div class="auth-left__bg-orbs">
+      <div class="auth-orb auth-orb--1"></div>
+      <div class="auth-orb auth-orb--2"></div>
+      <div class="auth-orb auth-orb--3"></div>
+    </div>
+
+    <a href="index.html" class="auth-left__logo">
+      <svg class="auth-left__logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="#FFD700"/>
+        <path d="M20 8l2.9 8.9H31l-7.6 5.5 2.9 8.9L20 26.8l-6.3 4.5 2.9-8.9L9 16.9h8.1L20 8z" fill="#1A1A2E"/>
+      </svg>
+      <span class="auth-left__logo-text">Star Bank</span>
+    </a>
+
+    <div class="auth-left__content">
+      <h2 class="auth-left__tagline">Ваш особистий<br/><span>кабінет</span></h2>
+      <p class="auth-left__subtitle">Керуйте фінансами зручно та безпечно в будь-який час</p>
+
+      <div class="auth-left__benefits">
+        <div class="auth-benefit">
+          <div class="auth-benefit__icon">🔒</div>
+          <div class="auth-benefit__text">
+            <span class="auth-benefit__title">Банківський рівень захисту</span>
+            <span class="auth-benefit__desc">256-bit шифрування, 2FA захист</span>
+          </div>
+        </div>
+        <div class="auth-benefit">
+          <div class="auth-benefit__icon">⚡</div>
+          <div class="auth-benefit__text">
+            <span class="auth-benefit__title">Миттєвий доступ</span>
+            <span class="auth-benefit__desc">Керуйте рахунком 24/7 онлайн</span>
+          </div>
+        </div>
+        <div class="auth-benefit">
+          <div class="auth-benefit__icon">📱</div>
+          <div class="auth-benefit__text">
+            <span class="auth-benefit__title">Вхід через Дію</span>
+            <span class="auth-benefit__desc">Авторизуйтесь швидко та безпечно</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-left__footer">
+      АТ «Зоряний Банк» · Ліцензія НБУ №254<br/>
+      Учасник ФГВФО · Вклади застраховані до 600 000 ₴<br/>
+      © 2024 Star Bank Ukraine
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-right">
+    <div class="auth-form-wrap">
+
+      <h1 class="auth-form-title">Вхід до кабінету</h1>
+      <p class="auth-form-subtitle">Введіть ваші дані для входу</p>
+
+      <!-- Alert -->
+      <div class="alert alert--error" id="login-alert" style="display:none;">
+        ⚠️ Невірні дані. Спробуйте ще раз.
+      </div>
+
+      <form id="login-form" novalidate>
+
+        <div class="form-group">
+          <label class="form-label" for="login-identifier">Телефон або email</label>
+          <input
+            type="text"
+            id="login-identifier"
+            class="form-input"
+            placeholder="+380 або email@example.com"
+            autocomplete="username"
+          />
+          <div class="form-error" id="err-identifier"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-password">Пароль</label>
+          <div class="form-input-wrap">
+            <input
+              type="password"
+              id="login-password"
+              class="form-input"
+              placeholder="Ваш пароль"
+              autocomplete="current-password"
+            />
+            <button type="button" class="form-input-icon" id="toggle-password" aria-label="Показати пароль">👁</button>
+          </div>
+          <div class="form-error" id="err-password"></div>
+        </div>
+
+        <a href="#" class="forgot-link">Забули пароль?</a>
+
+        <button type="submit" class="btn btn--primary btn--full btn--lg">
+          Увійти
+        </button>
+
+        <div class="or-divider">або</div>
+
+        <button type="button" class="btn btn--diia btn--full btn--lg diia-logo-btn" id="diia-login-btn">
+          <span class="diia-icon">Д</span>
+          Увійти через Дію
+        </button>
+
+      </form>
+
+      <div class="auth-switch">
+        Ще не маєте рахунку?
+        <a href="register.html" class="auth-link">Зареєструватися</a>
+      </div>
+
+      <div style="margin-top:12px; text-align:center;">
+        <a href="index.html" class="auth-link" style="font-size:13px; color:var(--text-muted);">← Повернутися на головну</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- DIIA LOGIN MODAL -->
+<div class="modal-overlay" id="diia-modal">
+  <div class="modal-box" style="max-width:460px;">
+    <div class="modal-header">
+      <h3 style="display:flex;align-items:center;gap:10px;">
+        <span style="width:32px;height:32px;background:#1976D2;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px;">Д</span>
+        Вхід через Дію
+      </h3>
+      <button class="modal-close" id="diia-modal-close" type="button">✕</button>
+    </div>
+
+    <div class="diia-block">
+      <div class="diia-qr-wrap" id="diia-qr"></div>
+
+      <div class="diia-timer">
+        <span class="diia-timer__dot"></span>
+        Код дійсний: <span id="diia-login-timer">04:58</span>
+      </div>
+
+      <ol class="diia-instructions">
+        <li>Відкрийте додаток Дія</li>
+        <li>Натисніть сканер у верхньому меню</li>
+        <li>Відскануйте QR-код на екрані</li>
+      </ol>
+
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;text-align:center;">
+        ⏳ Авторизація відбудеться автоматично через 3 секунди...
+      </p>
+
+      <p class="diia-consent">Натискаючи кнопку, ви погоджуєтесь передати дані з Дії до Star Bank Ukraine для ідентифікації особи.</p>
+    </div>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>
